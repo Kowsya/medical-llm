@@ -83,4 +83,4 @@ with gr.Blocks(title="Medical LLM: SFT vs SFT + DPO") as demo:
     outs = [*ui["sft"], *ui["dpo"]]
     both_btn.click(ask_both, [shared, n], outs); shared.submit(ask_both, [shared, n], outs)
 
-demo.queue().launch()
+demo.queue().launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))
